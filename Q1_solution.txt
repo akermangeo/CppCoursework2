@@ -1,0 +1,11 @@
+25u is an unsigned integer.
+50 is an intger, but get converted to an unsigned interger as the two operands 
+are different types and the unsigned integer type is higher in the higherarchy 
+than a standard intger.
+
+So the opperation becomes
+
+25u - 50u = 4294967271
+
+because the maximum size of an unsigned intger is 4294967295.  So when 50 is 
+subtraced from 25 the value rolls over and ends up as 4294967295 - 24.
