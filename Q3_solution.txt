@@ -1,0 +1,28 @@
+One expects the following output:
+
+main: a: 3, b: 5
+swap1: a: 5, b:3
+main: a: 3, b: 5
+swap2: *a: 5, *b:3
+main: a: 5, b: 3
+swap3: a: 3, b:5
+main: a: 3, b: 5
+
+The initial main output is just outputting what we initialised a and b to.
+
+swap1 swaps the order of a and b but this is only local to the function so 
+the original a and b in the main function remain unchanged.  Hence, in the 
+next main output still outputs main: a: 3, b: 5.
+
+However, as swap2 takes pointers to the original a and b as arguements, when 
+it swaps the values of a and b it swaps the values of the original variables 
+defined in the main function.  So, in the next main output is now main: a: 5,
+b: 3.
+
+For swap3, one should first note that a = 5 and b = 3 when passed to this 
+function.  We also note that swap3 takes references to a and b as input.  So 
+acts in the same way as swap2, changing the actual values of a and b rather 
+than creating local copies. Recall that no * is needed to access the values at 
+the location reference, unlike a pointer.
+
+Finally, we end with a = 3, b = 5.
