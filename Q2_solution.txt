@@ -1,0 +1,13 @@
+One expects this program to out put:
+
+i: 7
+j: 5
+k: 7
+
+We can see this by expanding out the ++i and i++ operators:
+
+initialise i = 5;
+first assign j = i = 5 then increment i = i + 1 = 6;
+fisrt increment i = i + 1 = 7 then assign k = i = 7;
+
+So at the end: i = 7, j = 5, k = 7
