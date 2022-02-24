@@ -7,7 +7,7 @@
 // (double) S = Price of underlying
 // (double) K = Strike
 // (double) t = Expiry (in years)
-// (double) r = Risk-free rate in percentage per annum
+// (double) r = Risk-free rate in percentage per annum 
 // (double) sigma = volatility of underlying asset in percentage per annum
 
 double d_i(const int& i, const double& S, const double& K, const double& t, const double& r, const double& sigma) 
