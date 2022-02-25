@@ -1,0 +1,26 @@
+One expects the following output:
+
+I am const, x = 1
+I am not const, x = 2
+I am not const, x = 3
+I am const, x = 4
+I am const, x = 1
+I am not const, x = 2
+
+A function becomes const when the const keyword is used in the function's declaration. When a function is declared as const, it can be called on any type of object. Non-const functions can only be called by non-const objects. 
+
+`a` is initialized as a const MyClass object. 
+Therefore, when a.get() is called, only the function `const int* get();` can be called. In fact, one can verify this by commenting the definition of `const int* MyClass::get(){...}`. The compiler will throw error as "passing 'const MyClass' as 'this' argument discards qualifiers".
+
+`b` is initialized as a MyClass object, but not const.
+A const function promises to only read the object, but not a non-const function. In fact, if the const function `const int* get();` is not defined, the non-const `get()` can be called. But as the non-const function does not provide a promise for no modification, the program is under the risk of crash. Therefore, if a non-const function 'get()' has been defined, b as a non-const object will have non-const `get()` called.
+
+The similar analysis applies to `c` and `d`. When calling `c->get()` and `d->get()`, the `get()` function is applied to what the pointer is pointing to, which are pointers pointing to non-const and const MyClass objects respectively.
+
+The similar analysis applies to `e` and `f`, which are const and non-const MyClass object having the same value of a and b, hence the x's of e and f are 1 and 2 respectivley.
+
+Need to note that the reason why `e` is a const is because it is initialized as `const MyClass`, not because `a` is a const. This can be simply verified by
+
+>>> MyClass g{ a };
+>>> g.get();
+I am not const, x = 1
