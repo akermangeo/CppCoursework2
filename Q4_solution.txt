@@ -1,0 +1,19 @@
+One expects the following output; 
+
+constructor called, x = 3
+constructor called, x = 5
+copy constructor called, x = 3
+assignment operator called, x was 3 and became 5
+assignment operator called, x was 3 and became 5
+destructor called, x = 5
+destructor called, x = 5
+destructor called, x = 5
+
+Line 1 and line 2 result from `MyClass a{ 3 }` and `MyClass b{ 5 }`, which call the constructor `MyClass(int x)` to initialize value x = 3 and 5 respectively of `MyClass` object.
+
+Line 3 results from `MyClass c{ a }`, which calls the copy constructor `MyClass(const MyClass& other)` to initalize the `MyClass` object of c by copying `a.x` to `c.x`. Hence, the vlaue of x for `c` is 3.
+
+Line 4 and line 5 result from `c = b` and 'a = b', which call the assignment operator defined for the `MyClass` object. Note that before the assignment, the value of x for `a` and `c` are both 3. By the definition of assignment operator, the value for both `a` and `c` are assigned by `b.x`, which is 5. 
+
+Line 6, 7 and 8 result from the end of the program, or to be specific, the end of the curly bracket `{ ... }` of the main. After the end of the curly bracket, the destructor will be called by default to destruct `a`, `b`, and `c`. Since the value of x for `a` and `c` have been assigned to `b.x`, which is 5, the value of `a.x`, `b.x` and `c.x` are 5 when they are destructed. 
+ 
