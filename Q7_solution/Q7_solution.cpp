@@ -71,5 +71,5 @@ int main()
 
     cout << "Call Price: " << call << " USD";
 
-    return 0;
+    return EXIT_SUCCESS;
 }
