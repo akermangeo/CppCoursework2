@@ -8,13 +8,13 @@ constexpr int max_iterations = 1000;
 template <typename T>
 double bisection_method(double y_target, double left, double right, double epsilon, T functor)
 {
-	double evaluate_left = T(left)-y_target;
-	double evaluate_right = T(right) - y_target;
+	double evaluate_left = functor(left)-y_target;
+	double evaluate_right = functor(right) - y_target;
 	int iterations_counter = 0;
 	do
 	{
 		double mid_point = left + right / 2;
-		double evaluate_mid = T(mid_point) - y_target;
+		double evaluate_mid = functor(mid_point) - y_target;
 		if (abs(evaluate_mid - y_target < epsilon))
 		{
 			return mid_point;
