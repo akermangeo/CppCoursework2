@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ee5cd9f4-59a3-4287-89ed-268c92257906}</ProjectGuid>
-    <RootNamespace>Q6solution</RootNamespace>
+    <ProjectGuid>{27de50ef-62fb-437f-b8ef-d60817eb4daf}</ProjectGuid>
+    <RootNamespace>Q6VecClient</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="arr_vector.h" />
+    <ClCompile Include="Q6_VecClient.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="arr_vector.cpp" />
+    <ProjectReference Include="..\Q6_vecLibrary\Q6_vecLibrary.vcxproj">
+      <Project>{57ed58b0-2cdf-414b-be94-b0dee18318f7}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

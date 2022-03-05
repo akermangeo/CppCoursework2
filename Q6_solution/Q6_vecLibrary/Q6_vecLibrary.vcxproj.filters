@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="arr_vector.h">
+    <ClInclude Include="ArrVec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="arr_vector.cpp">
+    <ClCompile Include="ArrVec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
