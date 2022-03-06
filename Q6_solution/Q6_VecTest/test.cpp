@@ -26,7 +26,7 @@ TEST(ConstructorTest, Constant0) {
     /// <summary>
     /// Test cases when v.n = 0 
     /// </summary>
-    Vector const_v0_{ 0, 1 };
+    Vector const_v0_(0, 1 );
     EXPECT_EQ(const_v0_.size(), 0);
 }
 
@@ -34,7 +34,7 @@ TEST(ConstructorTest, Constant1) {
     /// <summary>
     /// Test cases when constant = 1 
     /// </summary>
-    Vector const_v1_{ 3, 1 };
+    Vector const_v1_( 3, 1 );
     EXPECT_EQ(const_v1_.size(), 3);
 
     for (int i = 0; i < 3; i++) {
@@ -46,7 +46,7 @@ TEST(ConstructorTest, Constant2) {
     /// <summary>
     /// Test cases when constant = -1 
     /// </summary>
-    Vector const_v2_{ 3, -1 };
+    Vector const_v2_( 3, -1 );
     EXPECT_EQ(const_v2_.size(), 3);
 
     for (int i = 0; i < 3; i++) {
@@ -58,7 +58,7 @@ TEST(ConstructorTest, Constant3) {
     /// <summary>
     /// Test cases when constant = 1.2 
     /// </summary>
-    Vector const_v3_{ 3, 1.2 };
+    Vector const_v3_( 3, 1.2 );
     EXPECT_EQ(const_v3_.size(), 3);
 
     for (int i = 0; i < 3; i++) {
@@ -70,7 +70,7 @@ TEST(ConstructorTest, Constant4) {
     /// <summary>
     /// Test cases when constant = 0.0 
     /// </summary>
-    Vector const_v4_{ 3, 0.0 };
+    Vector const_v4_( 3, 0.0 );
     EXPECT_EQ(const_v4_.size(), 3);
 
     for (int i = 0; i < 3; i++) {
@@ -101,16 +101,12 @@ TEST(ConstructorTest, Arrary1) {
     int va_len = 5;
     double va[] = { 1, 2, 3, 4, 5 };
     double* a = &va[0];
-    Vector arr_v1_{ 3, a };
+    Vector arr_v1_(3, a );
 
     EXPECT_EQ(arr_v1_.size(), 3);
-    EXPECT_NE(arr_v1_.size(), va_len);
 
     for (int i = 0; i < 3; i++) {
         EXPECT_EQ(arr_v1_[i], a[i]) << "Vectors arr_v1_ differs from a at index " << i;
-    }
-    for (int i = 3; i < va_len; i++) {
-        EXPECT_NE(arr_v1_[i], a[i]) << "Vectors arr_v2_ should not the same as a a at index " << i;  /*TODO: What? I failed here*/
     }
 }
 
@@ -121,10 +117,9 @@ TEST(ConstructorTest, Arrary2) {
     int va_len = 5;
     double va[] = { 1, 2, 3, 4, 5 };
     double* a = &va[0];
-    Vector arr_v2_{ 10, a };
+    Vector arr_v2_( 10, a );
 
     EXPECT_EQ(arr_v2_.size(), 10);
-    EXPECT_NE(arr_v2_.size(), va_len);
 
     for (int i = 0; i < 10; i++) {
         EXPECT_EQ(arr_v2_[i], a[i]) << "Vectors arr_v2_ differs from a at index " << i;
@@ -132,10 +127,10 @@ TEST(ConstructorTest, Arrary2) {
 }
 
 TEST(ConstructorTest, Copy) {
-    const Vector v{ 10, 1 };
+    const Vector v(10, 1 );
     Vector u{ v };
     for (int i = 0; i < 10; ++i) {
-        EXPECT_EQ(v[i], u[i]) << "Vectors u differ from u at index " << i;;
+        EXPECT_EQ(v[i], u[i]) << "Vectors u differ from u at index " << i;
     }
 }
 
@@ -151,7 +146,7 @@ TEST(OperatorTest, Assign) {
 TEST(OperatorTest, BracketModify) {
     double va[] = { 1, 2, 3, 4, 5 };
     double* a = &va[0];
-    Vector v{ 10, a };
+    Vector v( 10, a );
 
     v[1] = -2;
 
@@ -180,6 +175,6 @@ TEST(MethodTest, Resize) {
         EXPECT_NE(v[i], a[i]) << "Vectors v differ from array va at index " << i;
     }
     for (int i = 0; i < 10; i++) {
-        EXPECT_EQ(v[i], 0) << "Vectors v differ from array va at index " << i;
+        EXPECT_EQ(v[i], 0) << "Vectors v differ from 0 at index " << i;
     }
 }

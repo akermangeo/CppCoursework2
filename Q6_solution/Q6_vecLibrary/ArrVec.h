@@ -75,13 +75,15 @@ namespace VecLibrary {
             // TODO: This is not a referrence, would this be a problem? 
             const double temp = v[i];  // Do I need a const here?
             return temp;
-        };
+        }
 
         /// <summary>
         /// return the size of the Vector
         /// </summary>
         /// <returns>size</returns>
-        inline int size() const { return nn; };
+        inline int size() const {
+            return nn; 
+        }
 
         /// <summary>
         /// resize (contents not preserved) as a zero vetors.

@@ -20,15 +20,9 @@ namespace VecLibrary {
 		}
 	};
 
-	Vector::Vector(const Vector& rhs) : nn{ rhs.nn }, v{ new double[nn] } {
-		/*Copy the array to the Vector in case rhs->v changed*/
-		for (int i = 0; i < nn; i++) {
-			v[i] = rhs.v[i];
-		}
-	};
+	Vector::Vector(const Vector& rhs) : Vector(rhs.nn, rhs.v) {}
 
 	Vector& Vector::operator=(const Vector& rhs) {
-		//nn{ rhs.nn }; /*Why I cannot use {}?*/
 		nn = rhs.nn;
 		delete v;
 		v = new double[nn];
@@ -41,13 +35,8 @@ namespace VecLibrary {
 
 
 	void Vector::resize(int newn) {
-		nn = newn;
-		delete v;
-		v = new double[nn];
-		for (int i = 0; i < nn; i++) {
-			v[i] = 0.0;
-		}
-	};
+		assign(newn, 0);
+	}
 
 	void Vector::assign(int newn, double a) {
 		nn = newn;
@@ -56,6 +45,6 @@ namespace VecLibrary {
 		for (int i = 0; i < nn; i++) {
 			v[i] = a;
 		}
-	};
+	}
 }
 

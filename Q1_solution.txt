@@ -1,7 +1,7 @@
 25u is an unsigned integer.
 50 is an intger, but get converted to an unsigned interger as the two operands 
 are different types and the unsigned integer type is higher in the higherarchy 
-than a standard intger.
+than a standard integer.
 
 So the opperation becomes
 

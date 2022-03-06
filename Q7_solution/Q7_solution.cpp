@@ -1,6 +1,11 @@
 #include <iostream>
 #include <cmath>
 
+/// <summary>
+/// Specifies which constant we are referring to in the B-S call price forlmula.
+/// </summary>
+enum class Constant_Type { d1, d2 };
+
 // Function to return the value of d_1 or d_2
 // Parameters:
 // (int) i = select whether to return d_1 or d_2.
@@ -10,10 +15,10 @@
 // (double) r = Risk-free rate in percentage per annum 
 // (double) sigma = volatility of underlying asset in percentage per annum
 
-double d_i(const int& i, const double& S, const double& K, const double& t, const double& r, const double& sigma) 
+double d_i(const Constant_Type& constant_to_produce, const double& S, const double& K, const double& t, const double& r, const double& sigma) 
 {
     double d_1 = (log(S / K) + ((r / 100) + sigma * sigma / (2 * 100 * 100)) * t) / (sqrt(t) * (sigma / 100));
-    if (i == 1)
+    if (constant_to_produce == Constant_Type::d1)
         return d_1;
     else
         return d_1 - (sqrt(t) * (sigma/100));
@@ -38,28 +43,12 @@ double std_gaussian_cdf(const double& x)
 
 double call_price(const double& S, const double& K, const double& t, const double& r, const double& sigma)
 {
-    return S * std_gaussian_cdf(d_i(1, S, K, t, r, sigma)) - K * exp(-(r / 100) * t) * std_gaussian_cdf(d_i(2, S, K, t, r, sigma));
+    return S * std_gaussian_cdf(d_i(Constant_Type::d1, S, K, t, r, sigma)) - K * exp(-(r / 100) * t) * std_gaussian_cdf(d_i(Constant_Type::d2, S, K, t, r, sigma));
 }
 
 int main()
 {
     using namespace std;
-    /*
-    cout << "Input European Call Expiry in years: ";
-    double t = 0;
-    cin >> t;
-    cout << "Input Call Strike: ";
-    double K = 0;
-    cin >> K;
-    cout << "Input Price of Underlying: ";
-    double S = 0;
-    cin >> S;
-    cout << "Input Volatility of Underlying in percentage per annum: ";
-    double sigma = 0;
-    cin >> sigma;
-    cout << "Input Risk-Free Rate in percentage per annum: ";
-    double r = 0;
-    cin >> r; */
 
     double t = 0.25;
     double K = 95;
