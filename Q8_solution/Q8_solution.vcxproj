@@ -153,9 +153,6 @@
   <ItemGroup>
     <ClInclude Include="bisection_method.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="bisection_method.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
