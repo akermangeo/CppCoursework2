@@ -171,6 +171,9 @@ TEST(MethodTest, Resize) {
 
     v.resize(10);
 
+    for (int i = 0; i < 5; i++) {
+        EXPECT_NE(v[i], a[i]) << "Vectors v equal to va at index " << i;
+    }
     for (int i = 0; i < 10; i++) {
         EXPECT_EQ(v[i], 0.0) << "Vectors v differ from 0 at index " << i;
     }
