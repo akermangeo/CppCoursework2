@@ -5,6 +5,7 @@ using namespace VecLibrary;
 
 int main() {
 	
+	Vector const_v1_(3, 0.);
 
 	double va[] = { 1, 2, 3, 4, 5 };
 	double* a = &va[0];

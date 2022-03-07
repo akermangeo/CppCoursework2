@@ -114,14 +114,13 @@ TEST(ConstructorTest, Arrary2) {
     /// <summary>
     /// Test cases when v.n > length of arrary 
     /// </summary>
-    int va_len = 5;
     double va[] = { 1, 2, 3, 4, 5 };
     double* a = &va[0];
     Vector arr_v2_( 10, a );
 
     EXPECT_EQ(arr_v2_.size(), 10);
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         EXPECT_EQ(arr_v2_[i], a[i]) << "Vectors arr_v2_ differs from a at index " << i;
     }
 }
@@ -150,7 +149,7 @@ TEST(OperatorTest, BracketModify) {
 
     v[1] = -2;
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         if (i == 1) {
             EXPECT_NE(v[i], a[i]) << "Vectors v equal to array va at index 1";
         }
@@ -165,7 +164,7 @@ TEST(MethodTest, Resize) {
     double* a = &va[0];
     Vector v{ 10, a };
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         EXPECT_EQ(v[i], a[i]) << "Vectors v differ from array va at index " << i;
     }
 
