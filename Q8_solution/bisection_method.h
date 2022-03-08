@@ -1,7 +1,7 @@
 constexpr int max_iterations = 1000; 
 
 template <typename T>
-double bisection_method(double y_target, double left, double right, double epsilon, T functor)
+double interval_bisection(double y_target, double left, double right, double epsilon, T functor)
 {
 	double evaluate_left = functor(left) - y_target;
 	double evaluate_right = functor(right) - y_target;
@@ -10,7 +10,7 @@ double bisection_method(double y_target, double left, double right, double epsil
 	{
 		double mid_point = (left + right) / 2;
 		double evaluate_mid = functor(mid_point) - y_target;
-		if (abs(evaluate_mid) < epsilon)
+		if (evaluate_mid == 0 || abs(right - left) < epsilon)
 		{
 			return mid_point;
 		}
