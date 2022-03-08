@@ -143,6 +143,11 @@
   <ItemGroup>
     <ClCompile Include="Q7_solution.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Black_Scholes_Helpers\Black_Scholes_Helpers.vcxproj">
+      <Project>{a6495ba4-aac1-4a8e-b059-8b8d343f619b}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
