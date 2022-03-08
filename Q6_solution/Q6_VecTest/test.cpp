@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../Q6_VecLibrary/ArrVec.h"
+#include "../Q6_vecLibrary/ArrVec.h"
 
 using namespace VecLibrary;
 

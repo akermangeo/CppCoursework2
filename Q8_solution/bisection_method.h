@@ -10,7 +10,7 @@ double bisection_method(double y_target, double left, double right, double epsil
 	{
 		double mid_point = (left + right) / 2;
 		double evaluate_mid = functor(mid_point) - y_target;
-		if (abs(evaluate_mid - y_target) < epsilon)
+		if (abs(evaluate_mid) < epsilon)
 		{
 			return mid_point;
 		}

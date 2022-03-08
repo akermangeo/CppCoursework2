@@ -33,14 +33,8 @@ namespace VecLibrary {
 		return *this;
 	};
 
-
 	void Vector::resize(int newn) {
-		nn = newn;
-		delete v;
-		v = new double[nn];
-		for (int i = 0; i < nn; i++) {
-			v[i] = 0.0;
-		}
+		assign(newn, 0.);
 	}
 
 	void Vector::assign(int newn, double a) {

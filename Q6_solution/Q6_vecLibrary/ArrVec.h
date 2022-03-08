@@ -64,7 +64,9 @@ namespace VecLibrary {
         /// </summary>
         /// <param name="i">i'th index</param>
         /// <returns></returns>
-        inline double& operator[](const int i) { return v[i]; };
+        inline double& operator[](const int i) { 
+            return v[i];
+        }
 
         /// <summary>
         /// return only the value of the i'th element
@@ -72,8 +74,7 @@ namespace VecLibrary {
         /// <param name="i">i'th index</param>
         /// <returns></returns>
         inline const double& operator[](const int i) const {
-            // TODO: This is not a referrence, would this be a problem? 
-            const double temp = v[i];  // Do I need a const here?
+            const double& temp = v[i];
             return temp;
         }
 
