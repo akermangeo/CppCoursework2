@@ -94,37 +94,6 @@ TEST(ConstructorTest, Arrary0) {
     }
 }
 
-TEST(ConstructorTest, Arrary1) {
-    /// <summary>
-    /// Test cases when v.n < length of arrary 
-    /// </summary>
-    int va_len = 5;
-    double va[] = { 1, 2, 3, 4, 5 };
-    double* a = &va[0];
-    Vector arr_v1_(3, a );
-
-    EXPECT_EQ(arr_v1_.size(), 3);
-
-    for (int i = 0; i < 3; i++) {
-        EXPECT_EQ(arr_v1_[i], a[i]) << "Vectors arr_v1_ differs from a at index " << i;
-    }
-}
-
-TEST(ConstructorTest, Arrary2) {
-    /// <summary>
-    /// Test cases when v.n > length of arrary 
-    /// </summary>
-    double va[] = { 1, 2, 3, 4, 5 };
-    double* a = &va[0];
-    Vector arr_v2_( 10, a );
-
-    EXPECT_EQ(arr_v2_.size(), 10);
-
-    for (int i = 0; i < 5; i++) {
-        EXPECT_EQ(arr_v2_[i], a[i]) << "Vectors arr_v2_ differs from a at index " << i;
-    }
-}
-
 TEST(ConstructorTest, Copy) {
     const Vector v(10, 1 );
     Vector u{ v };
@@ -138,14 +107,14 @@ TEST(OperatorTest, Assign) {
     Vector v{};
     v = u;
     for (int i = 0; i < 10; ++i) {
-        EXPECT_EQ(v[i], u[i]) << "Vectors u differ from u at index " << i;;
+        EXPECT_EQ(v[i], u[i]) << "Vectors u differ from u at index " << i;
     }
 }
 
-TEST(OperatorTest, BracketModify) {
+TEST(OperatorTest, BracketModify1) {
     double va[] = { 1, 2, 3, 4, 5 };
     double* a = &va[0];
-    Vector v( 10, a );
+    Vector v( 5, a );
 
     v[1] = -2;
 
@@ -159,10 +128,41 @@ TEST(OperatorTest, BracketModify) {
     }
 }
 
+TEST(OperatorTest, BracketModify2) {
+    double va[] = { 1, 2, 3, 4, 5 };
+    double* a = &va[0];
+    Vector v(5, a);
+
+    double& data_member = v[1];
+    data_member = -2;
+
+    for (int i = 0; i < 5; i++) {
+        if (i == 1) {
+            EXPECT_NE(v[i], a[i]) << "Vectors v equal to array va at index 1";
+        }
+        else {
+            EXPECT_EQ(v[i], a[i]) << "Vectors v differ from array va at index " << i;
+        }
+    }
+}
+
+TEST(OperatorTest, ConstBracket) {
+    int va_len = 5;
+    double va[] = { 1, 2, 3, 4, 5 };
+    double* a = &va[0];
+    const Vector v(5, a);
+
+    EXPECT_EQ(v.size(), va_len);
+
+    for (int i = 0; i < 5; i++) {
+        EXPECT_EQ(v[i], a[i]) << "Vectors v differs from a at index " << i;
+    }
+}
+
 TEST(MethodTest, Resize) {
     double va[] = { 1, 2, 3, 4, 5 };
     double* a = &va[0];
-    Vector v{ 10, a };
+    Vector v{ 5, a };
 
     for (int i = 0; i < 5; i++) {
         EXPECT_EQ(v[i], a[i]) << "Vectors v differ from array va at index " << i;
